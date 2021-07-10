@@ -6,9 +6,9 @@ from mmseg.datasets.custom import CustomDataset
 @DATASETS.register_module()
 class DroneDataset_12(CustomDataset):
     CLASSES = (
-        'background', 'road', 'ground', 'water',
+        'road', 'ground', 'water',
         'vegetation', 'construction', 'person', 'dog',
-        'car', 'bicycle', 'obstacle', 'conflicting'
+        'car', 'bicycle', 'obstacle', 'conflicting', 'background'
     )
     PALETTE = [
         [255, 0, 0], [0, 255, 0], [0,	255,	0], [0, 255,	255],
