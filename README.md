@@ -1,4 +1,4 @@
-# aerial_semantic_segmentation
+# Aerial semantic segmentation
 
 This repository presents approach for semantic segmentation using [Semantic Drone Dataset](https://www.tugraz.at/index.php?id=22387) dataset. 
 You can also find this dataset on [Kaggle](https://www.kaggle.com/bulentsiyah/semantic-drone-dataset)
