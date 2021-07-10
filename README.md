@@ -24,6 +24,15 @@ The original Semantic Drone Dataset contents 24 semanic classes of:
 - `bald-tree` - `ar-marker` - `obstacle`
 
 After uniting some classes to more general view, 24 classes was reduced to 12:
-- `road` - `ground` - `water` - `person` - `car`
+- `road` - `ground` - `water` - `person` - `car
 - `vegetation` - `construction` - `bicycle` 
 - `dog` - `obstacle` - `conflicting` - `background`
+
+# Checkpoints
+
+| Method | Backbone | pretrain img size | Crop Size | Batch Size | Lr schd | Mem (GB) | mIoU(ms+flip) | Num Clasess | config | download |
+| ------ | -------- | ----------------- | --------- | ---------- | ------- | -------- | ------------- | ----------- | ------ | -------: | 
+| UperNet | Swin-T  | 768x512           | 384x384   | 8          | 160000  | -        | -             | 12          | [config](https://github.com/GhostLate/aerial_semantic_segmentation/blob/main/configs/config_SWIN_12.py) | [model](https://drive.google.com/file/d/14Qb9MrC-MJJKaDHnaa0IiKjRoFTqxwGW/view?usp=sharing) &#124; [log]() |
+| OCRNet | HRNetV2p-W48 | 768x512       | 384x384   | 4          | 160000  | -        | -             | 12          | [config](https://github.com/GhostLate/aerial_semantic_segmentation/blob/main/configs/config_HRNetV2_W48.py) | [model](https://drive.google.com/file/d/165AHie9s60gFLi-aRHADIXAaJBhKzIAk/view?usp=sharing) &#124; [log]() |
+| DNL    | ResNet-101-D8 | 768x512      | 512x512   | 4          | 80000   | -        | -             | 12          | [config](https://github.com/GhostLate/aerial_semantic_segmentation/blob/main/configs/config_ResNet.py) | [model](https://drive.google.com/file/d/10JERyy_UF80bo9E2-48IsN3qi2-vKb4r/view?usp=sharing) &#124; [log]() |
+| UperNet | Swin-T  | 768x512           | 384x384   | 8          | 160000  | -        | -             | 24          | [config](https://github.com/GhostLate/aerial_semantic_segmentation/blob/main/configs/config_SWIN_24.py) | [model](https://drive.google.com/file/d/10nqYeUiWfZ6zvGz6QGDWSgnzzP144SEr/view?usp=sharing) &#124; [log]() |
