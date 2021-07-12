@@ -6,9 +6,9 @@ from mmseg.datasets.custom import CustomDataset
 @DATASETS.register_module()
 class DroneDataset_12(CustomDataset):
     CLASSES = (
-        'road', 'ground', 'water',
+        'background', 'road', 'ground', 'water',
         'vegetation', 'construction', 'person', 'dog',
-        'car', 'bicycle', 'obstacle', 'conflicting', 'background'
+        'car', 'bicycle', 'obstacle', 'conflicting'
     )
     PALETTE = [
         [255, 0, 0], [0, 255, 0], [0,	255,	0], [0, 255,	255],
@@ -25,7 +25,7 @@ class DroneDataset_12(CustomDataset):
 @DATASETS.register_module()
 class DroneDataset_24(CustomDataset):
     CLASSES = (
-        'unlabeled', 'paved-area', 'dirt', 'grass',
+        'background', 'paved-area', 'dirt', 'grass',
         'gravel', 'water', 'rocks', 'pool',
         'vegetation', 'roof', 'wall', 'window',
         'door', 'fence', 'fence-pole', 'person',
@@ -33,7 +33,7 @@ class DroneDataset_24(CustomDataset):
         'bald-tree', 'ar-marker', 'obstacle', 'conflicting'
     )
     PALETTE = [
-        [0, 0, 0], [128, 64, 128], [130, 76, 0], [0, 102, 0],
+        [87, 112, 0], [128, 64, 128], [130, 76, 0], [0, 102, 0],
         [112, 103, 87], [28, 42, 168], [48, 41, 30], [0, 50, 89],
         [107, 142, 35], [190, 153, 153], [102, 102, 156], [254, 228, 12],
         [254, 148, 12], [70, 70, 70], [153, 153, 153], [255, 22, 96],

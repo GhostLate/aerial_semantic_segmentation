@@ -15,10 +15,13 @@ class MediaFile:
     vid_capture: cv2.VideoCapture
     load_seg: bool = True
     model: Model
+    scale: bool = False
+    scale_f: float = 1.0
+    resize_f: float = 1.0
 
     def __init__(self, data_path: str, model: Model):
         self.model = model
-        self.reload(data_path, 1)
+        self.reload(data_path, 0)
 
     def reload(self, file_path: str, change: int):
         if os.path.isfile(file_path):
@@ -47,8 +50,9 @@ class MediaFile:
                     self.vid_capture = cv2.VideoCapture(file_path)
                 else:
                     self.image = cv2.cvtColor(cv2.imread(file_path, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
+                    self.image = cv2.resize(self.image, (int(self.image.shape[1]/self.resize_f), int(self.image.shape[0]/self.resize_f)))
                     if self.load_seg:
-                        self.seg_map = self.model.get_seg(self.image)
+                        self.seg_map = self.model.get_seg(self.image, self.scale, self.scale_f)
                     else:
                         self.seg_map = self.image
                 self.file_path = file_path
@@ -61,8 +65,9 @@ class MediaFile:
     def read(self):
         if mimetypes.guess_type(self.file_path)[0].startswith('video'):
             self.image = self.vid_capture.read()[1]
+            self.image = cv2.resize(self.image, (int(self.image.shape[1]/self.resize_f), int(self.image.shape[0]/self.resize_f)))
             if self.load_seg:
-                self.seg_map = self.model.get_seg(self.image)
+                self.seg_map = self.model.get_seg(self.image, self.scale, self.scale_f)
             else:
                 self.seg_map = self.image
         return self.image, self.seg_map

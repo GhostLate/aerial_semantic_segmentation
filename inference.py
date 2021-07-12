@@ -71,6 +71,34 @@ def run_viewer(data_path: str, model: Model, args):
             media_file.load_seg = not media_file.load_seg
             media_file.reload(data_path, 0)
 
+        elif key == ord('e'):  # Turn On/Off segmentation mode
+            media_file.scale = not media_file.scale
+            media_file.reload(data_path, 0)
+
+        elif key == ord('z'):
+            if media_file.scale:
+                media_file.resize_f = 1.0
+                media_file.scale_f -= 0.1
+                print(media_file.scale_f)
+                media_file.reload(data_path, 0)
+            else:
+                if media_file.resize_f >= 1.0:
+                    media_file.resize_f -= 0.1
+                    print(media_file.resize_f)
+                    media_file.reload(data_path, 0)
+
+
+        elif key == ord('x'):
+            if media_file.scale:
+                media_file.resize_f = 1.0
+                media_file.scale_f += 0.1
+                print(media_file.scale_f)
+                media_file.reload(data_path, 0)
+            else:
+                media_file.resize_f += 0.1
+                print(media_file.resize_f)
+                media_file.reload(data_path, 0)
+
         elif key == ord('q'):
             exit()
 
